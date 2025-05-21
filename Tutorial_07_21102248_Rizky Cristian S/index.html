@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas JavaScript & jQuery - Rizky Cristian</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            padding-top: 20px;
+            color: #333;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+        }
+
+        #color-box {
+            width: 200px;
+            height: 200px;
+            background-color: #e9ecef;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            transition: background-color 0.4s ease;
+        }
+
+        .btn-custom {
+            margin: 5px;
+            min-width: 170px;
+        }
+
+        .input-group {
+            max-width: 350px;
+            margin: 0 auto 15px;
+        }
+
+        .result-box {
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        /* Tambahan gaya mahasiswa */
+        .handwritten {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        .sticker {
+            position: absolute;
+            right: 20px;
+            top: -15px;
+            background-color: #ffc107;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transform: rotate(15deg);
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="text-center mb-4">
+        <h1 class="display-5 text-primary fw-bold">Tugas JavaScript & jQuery</h1>
+        <p class="lead handwritten">Rizky Cristian S - 21102248</p>
+    </div>
+
+    <!-- Bagian 1: Hitung Jumlah Bilangan Ganjil -->
+    <div class="card">
+        <div class="card-header position-relative">
+            <h2 class="h5 mb-0"><i class="bi bi-calculator"></i> Hitung Jumlah Bilangan Ganjil</h2>
+        </div>
+        <div class="card-body text-center">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="min">Min:</label>
+                <input type="number" id="min" class="form-control" value="1" placeholder="Masukkan nilai minimum" title="Nilai Minimum">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="max">Max:</label>
+                <input type="number" id="max" class="form-control" value="8" placeholder="Masukkan nilai maksimum" title="Nilai Maksimum">
+            </div>
+            <button id="calculate-btn" class="btn btn-primary btn-custom">
+                <i class="bi bi-plus-circle"></i> Hitung Ganjil
+            </button>
+            <div class="result-box mt-3">
+                <p class="mb-1">Hasil Penjumlahan:</p>
+                <span id="result" class="display-6 text-primary">0</span>
+                <p id="process" class="text-muted small mt-2"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian 2: Manipulasi CSS dengan jQuery -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="h5 mb-0"><i class="bi bi-magic"></i> Manipulasi CSS dengan jQuery</h2>
+        </div>
+        <div class="card-body text-center">
+            <div id="text-container" class="mb-4 p-3 bg-light rounded">
+                <p class="mb-0">Ini adalah contoh teks yang akan diubah alignment-nya. Dibuat dengan jQuery!</p>
+            </div>
+
+            <div id="color-box" class="mb-4">
+                <span class="text-muted">Klik tombol untuk mengubah warna!</span>
+            </div>
+
+            <div class="d-flex justify-content-center flex-wrap">
+                <button id="align-btn" class="btn btn-success btn-custom">
+                    <i class="bi bi-text-center"></i> Ubah Alignment Teks
+                </button>
+                <button id="color-btn" class="btn btn-warning btn-custom">
+                    <i class="bi bi-palette"></i> Ubah Warna Kotak
+                </button>
+            </div>
+            
+            <div class="note mt-3">
+                <i class="bi bi-lightbulb"></i> Coba klik tombol-tombol di atas untuk melihat efeknya!
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <small>&copy; 2025 Rizky Cristian S - IF09K - 21102248</small>
+        <br>
+    </footer>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Fungsi untuk menghitung jumlah bilangan ganjil
+function hitungGanjil(min, max) {
+    let total = 0;
+    let proses = "";
+    
+    // Validasi input
+    if (min > max) {
+        alert("Min tidak boleh lebih besar dari Max!");
+        return {
+            sum: 0,
+            expression: ""
+        };
+    }
+    
+    // Mulai dari bilangan ganjil pertama
+    let mulai = (min % 2 === 1) ? min : min + 1;
+    
+    // Hitung jumlah bilangan ganjil
+    for (let i = mulai; i <= max; i += 2) {
+        total += i;
+        if (proses !== "") proses += " + ";
+        proses += i;
+    }
+    
+    return {
+        sum: total,
+        expression: proses
+    };
+}
+
+// Event handler untuk tombol hitung
+$("#calculate-btn").click(function() {
+    const min = parseInt($("#min").val());
+    const max = parseInt($("#max").val());
+
+    if (isNaN(min) || isNaN(max)) {
+        alert("Harap masukkan angka yang valid!");
+        return;
+    }
+
+    const hasil = hitungGanjil(min, max);
+    $("#result").text(hasil.sum);
+    $("#process").text(hasil.expression + (hasil.expression ? " = " + hasil.sum : ""));
+});
+
+
+    // Variabel untuk manipulasi CSS
+    let warnaAsli = "#e9ecef";
+    let warnaSekarang = true;
+    let warnaAlternatif = "#ffc107";
+    let alignSekarang = "left";
+
+    // Tombol untuk mengubah alignment teks
+    $("#align-btn").click(function() {
+        const teks = $("#text-container p");
+
+        if (alignSekarang === "left") {
+            teks.css("text-align", "center");
+            alignSekarang = "center";
+            $(this).html('<i class="bi bi-text-center"></i> Alignment: Tengah');
+        } else if (alignSekarang === "center") {
+            teks.css("text-align", "right");
+            alignSekarang = "right";
+            $(this).html('<i class="bi bi-text-right"></i> Alignment: Kanan');
+        } else {
+            teks.css("text-align", "left");
+            alignSekarang = "left";
+            $(this).html('<i class="bi bi-text-left"></i> Alignment: Kiri');
+        }
+    });
+
+    // Tombol untuk mengubah warna kotak
+    $("#color-btn").click(function() {
+        if (warnaSekarang) {
+            $("#color-box").css("background-color", warnaAlternatif);
+            $("#color-box span").text("Warna kuning!").css("font-weight", "bold");
+            $(this).html('<i class="bi bi-palette"></i> Kembalikan Warna');
+        } else {
+            $("#color-box").css("background-color", warnaAsli);
+            $("#color-box span").text("Klik tombol untuk mengubah warna!").css("font-weight", "normal");
+            $(this).html('<i class="bi bi-palette"></i> Ubah Warna Kotak');
+        }
+        warnaSekarang = !warnaSekarang;
+    });
+    
+    // Efek tambahan saat halaman dimuat
+    $(document).ready(function() {
+        $("#text-container").hide().fadeIn(1000);
+        $("#color-box").hide().slideDown(800);
+    });
+</script>
+
+</body>
+</html>
